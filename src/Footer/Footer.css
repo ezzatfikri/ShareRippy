@@ -1,7 +1,7 @@
 body{
-    background-color: rgb(236, 238, 236);
+    background-color:#bea286;
 }
-h1,h2{
+h1,h5{
     text-align: center;
     color: rgb(254, 254, 254);
 }
@@ -9,7 +9,7 @@ h1,h2{
 div.footer{
     
     width: 100%;
-    background-color: rgb(40, 41, 40);
+    background-color:#886644;
     
 }
 .footer-ul{
