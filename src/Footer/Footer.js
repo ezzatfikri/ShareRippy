@@ -14,7 +14,7 @@ function Footer() {
       </ul>
       <br></br>
       <div>
-        <h2>Copyright&copy; 2023 ShareRippy</h2>
+        <h5>Copyright&copy; 2023 ShareRippy</h5>
       </div>
     </div>
   );
