@@ -1,0 +1,29 @@
+body{
+    background-color: rgb(236, 238, 236);
+}
+h1,h2{
+    text-align: center;
+    color: rgb(254, 254, 254);
+}
+
+div.footer{
+    
+    width: 100%;
+    background-color: rgb(40, 41, 40);
+    
+}
+.footer-ul{
+    display:flex; 
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    list-style: none;
+}
+li{
+    margin-right: 30px;
+}
+
+a{
+    color: white;
+    text-decoration: none
+}

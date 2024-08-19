@@ -1,0 +1,27 @@
+.top-container, .sec-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #bea286;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 1;
+  }
+  
+  .image-column {
+    width: 30%; /* Adjust as needed */
+  }
+  
+  .food-details, .cooking-steps {
+    flex: 2; /* Adjust as needed */
+  }
+  
+  .user-info {
+    flex: 1;
+  }
+  
