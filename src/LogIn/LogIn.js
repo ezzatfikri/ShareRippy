@@ -3,23 +3,29 @@ import './LogIn.css';
 
 function Login() {
     return (
-        <div className="login-container">
-      <div className="login-box">
-        <h2>Login</h2>
-        <form>
-          <div className="input-group">
-            <label For="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email" />
+      <div className="container mt-5 mb-5">
+      <div className="row justify-content-center">
+          <div className="col-md-5">
+              <div className="card mt-3 p-4">
+                  <div className="card-body bg-white">
+                      <h2 className="text-center mb-4">Login</h2>
+                      <form>
+                          <div className="form-group">
+                              <label htmlFor="email" className='text-start'>Email</label>
+                              <input type="email" className="form-control" id="email" placeholder="Enter your email" />
+                          </div>
+                          <div className="form-group">
+                              <label htmlFor="password" className='text-start'>Password</label>
+                              <input type="password" className="form-control mb-4" id="password" placeholder="Enter your password" />
+                          </div>
+                          <button type="submit" className="btn btn-block custom-btn">Login</button>
+                          <p className='text-center font-weight-light'>Don't have an account? <a href="/register" class='text'>Sign Up</a></p>
+                      </form>
+                  </div>
+              </div>
           </div>
-          <div className="input-group">
-            <label For="password">Password</label>
-            <input type="password" id="password" placeholder="Enter your password" />
-          </div>
-          <button type="submit" className="login-button">Login</button>
-          <p>Don't have an account? <a href='Register'>Sign Up</a></p>
-        </form>
       </div>
-    </div>
+  </div>
     );
 }
 
