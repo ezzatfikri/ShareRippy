@@ -6,7 +6,7 @@ function Home() {
       <div style={{ display: "flex" }}>
         <div style={{ float: 'left', marginLeft: '10px', width: '50%' }}>
           <h1>Welcome to ShareRippy</h1>
-          <h5 style={{ color: 'white' }}>At Share Amogus, we connect food lovers globally to share and discover favorite recipes and cooking tips. Whether you're an experienced chef or a home cook seeking inspiration, our community lets you exchange culinary creations and celebrate the joy of cooking together. Join us and be part of a global amogus kitchen where every recipe tells a story..</h5>
+          <h5 style={{ color: 'white' }}>At Share Rippy, we connect food lovers globally to share and discover favorite recipes and cooking tips. Whether you're an experienced chef or a home cook seeking inspiration, our community lets you exchange culinary creations and celebrate the joy of cooking together. Join us and be part of a global kitchen where every recipe tells a story..</h5>
         </div>
 
         <div style={{ float: 'right', marginRight: '10px', width: '45%' }}>
