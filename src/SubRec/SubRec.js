@@ -11,61 +11,65 @@ function SubRec() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log({ recipeName, ingredients, description, cookingSteps, difficulty, image });
   };
 
-
   return (
-    <div className="container">
-      <div className="container1 row">
-        <div className="column image-upload">
-          <div className="form-group">
-            <label htmlFor="image">Upload Image:</label>
-            <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} />
+    <div className="subrec-container">
+      <form onSubmit={handleSubmit}>
+        <div className="subrec-row subrec-top-row">
+          <div className="subrec-column subrec-image-upload">
+            <div className="subrec-form-group">
+              <label htmlFor="image" className="subrec-label">Upload Image:</label>
+              <input type="file" id="image" className="subrec-input" onChange={(e) => setImage(e.target.files[0])} />
+            </div>
           </div>
-          <button type="submit" onClick={handleSubmit}>Upload</button>
-        </div>
-        <div className="column recipe-details">
-          <div className="form-group">
-            <label htmlFor="recipeName">Recipe Name:</label>
-            <input type="text" id="recipeName" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
+          <div className="subrec-column subrec-recipe-details">
+            <div className="subrec-form-group">
+              <label htmlFor="recipeName" className="subrec-label">Recipe Name:</label>
+              <input type="text" id="recipeName" className="subrec-input" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
+            </div>
+            <div className="subrec-form-group">
+              <label htmlFor="description" className="subrec-label">Description:</label>
+              <textarea id="description" className="subrec-textarea" value={description} onChange={(e) => setDescription(e.target.value)} />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="description">Description:</label>
-            <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-          </div>
-        </div>
-        <div className="column recipe-ingredients">
-        <div className="form-group">
-            <label htmlFor="ingredients">Ingredients:</label>
-            <textarea id="ingredients" value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
-          </div>
-          </div>
-      </div>
-      <div className="container2 row">
-        <div className="column cooking-steps">
-          <div className="form-group">
-            <label htmlFor="cookingSteps">Cooking Steps:</label>
-            <textarea id="cookingSteps" value={cookingSteps} onChange={(e) => setCookingSteps(e.target.value)} />
+          <div className="subrec-column subrec-recipe-ingredients">
+            <div className="subrec-form-group">
+              <label htmlFor="ingredients" className="subrec-label">Ingredients:</label>
+              <textarea id="ingredients" className="subrec-textarea" value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
+            </div>
           </div>
         </div>
-        <div className="column difficulty">
-          <div className="form-group">
-            <label htmlFor="difficulty">Level of Difficulty:</label>
-            <input type="radio" id="easy" name="difficulty" value="easy" checked={difficulty === 'easy'} onChange={() => setDifficulty('easy')} />
-            <label htmlFor="easy">Easy</label>
-            <input type="radio" id="medium" name="difficulty" value="medium" checked={difficulty === 'medium'} onChange={() => setDifficulty('medium')} />
-            <label htmlFor="medium">Medium</label>
-            <input type="radio" id="hard" name="difficulty" value="hard" checked={difficulty === 'hard'} onChange={() => setDifficulty('hard')} />
-            <label htmlFor="hard">Hard</label>
+        <div className="subrec-row subrec-bottom-row">
+          <div className="subrec-column subrec-cooking-steps">
+            <div className="subrec-form-group">
+              <label htmlFor="cookingSteps" className="subrec-label">Cooking Steps:</label>
+              <textarea id="cookingSteps" className="subrec-textarea" value={cookingSteps} onChange={(e) => setCookingSteps(e.target.value)} />
+            </div>
+          </div>
+          <div className="subrec-column subrec-difficulty">
+            <div className="subrec-form-group">
+              <label htmlFor="difficulty" className="subrec-label">Level of Difficulty:</label>
+              <div>
+                <input type="radio" id="easy" name="difficulty" className="subrec-input" value="easy" checked={difficulty === 'easy'} onChange={() => setDifficulty('easy')} />
+                <label htmlFor="easy" className="subrec-label">Easy</label>
+              </div>
+              <div>
+                <input type="radio" id="medium" name="difficulty" className="subrec-input" value="medium" checked={difficulty === 'medium'} onChange={() => setDifficulty('medium')} />
+                <label htmlFor="medium" className="subrec-label">Medium</label>
+              </div>
+              <div>
+                <input type="radio" id="hard" name="difficulty" className="subrec-input" value="hard" checked={difficulty === 'hard'} onChange={() => setDifficulty('hard')} />
+                <label htmlFor="hard" className="subrec-label">Hard</label>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="container">
-      {/* ... rest of your form elements */}
-      <button type="submit" onClick={handleSubmit}>Submit Recipe</button>
-    </div>
-      </div>
+        <div className="subrec-submit-container">
+          <button type="submit" className="subrec-button">Submit Recipe</button>
+        </div>
+      </form>
     </div>
   );
 }

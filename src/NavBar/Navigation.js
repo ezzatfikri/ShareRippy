@@ -1,38 +1,46 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import './Navigation.css'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Navigation.css';
+import Person2Icon from '@mui/icons-material/Person2';
+import SearchIcon from '@mui/icons-material/Search';
 
 function Navigation() {
     return (
-        <div>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" to="/"><img src="favicon.ico" alt="logo" id='logo' /></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <div className="NavBar">
+            <nav className="navbar navbar-expand-lg">
+                <Link className="navbar-brand" to="/"><img src="ShareRippyLogo.jpg" alt="logo" id='logo' /></Link>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <Link class="nav-link" to="/">Home</Link>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item active">
+                            <Link className="nav-link" to="/">Home</Link>
                         </li>
-                        <li class="nav-item active">
-                            <Link class="nav-link" to="ctg">Category</Link>
+                        <li className="nav-item active">
+                            <Link className="nav-link" to="ctg">Category</Link>
                         </li>
-                        <li class="nav-item active">
-                            <Link class="nav-link" to="prf">Profile</Link>
+                        <li className="nav-item active">
+                            <Link className="nav-link" to="prf">Profile</Link>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                        <Link class="btn btn-outline-success" to="login">Login</Link>
-                    </form>
-
+                    <div className="container">
+                        <form className="d-flex align-items-center" role="search">
+                            <input
+                                className="form-control me-2"
+                                type="search"
+                                placeholder="Search"
+                                aria-label="Search"
+                            />
+                            <button className="navbtn btn-outline-light" type="submit"><SearchIcon />Search</button>
+                            <Link className="navbtn btn-outline-light" to="login"><><Person2Icon />Login</></Link>
+                        </form>
+                    </div>
                 </div>
             </nav>
         </div>
-    )
+    );
 }
 
-export default Navigation
+export default Navigation;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import './Global.css';
 import './Category.css';
 
 function Category() {
