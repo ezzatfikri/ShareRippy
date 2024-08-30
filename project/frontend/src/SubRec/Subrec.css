@@ -1,0 +1,91 @@
+/* SubRec Component (Recipe Submission Form) */
+.subrec-container {
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.subrec-form-group {
+  margin-bottom: 20px;
+}
+
+.subrec-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.subrec-input,
+.subrec-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.subrec-difficulty .subrec-radio,
+.subrec-category .subrec-radio {
+  margin-right: 5px; 
+}
+
+.subrec-difficulty label,
+.subrec-category label {
+  display: inline-block; 
+} 
+
+.subrec-textarea {
+  resize: vertical;
+}
+
+.subrec-input {
+  margin-right: 5px;
+}
+
+.subrec-button {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.subrec-button:hover {
+  background-color: #218838;
+}
+
+.subrec-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.subrec-column {
+  flex: 1;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #e0c7a5;
+}
+
+.subrec-cooking-steps {
+  flex: 2; 
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #e0c7a5;
+}
+.subrec-submit-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
