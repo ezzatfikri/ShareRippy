@@ -12,8 +12,7 @@ function SubRec() {
   const [category, setCategory] = useState('');
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [showModal, setShowModal] = useState(false); // State to control the modal visibility
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -36,94 +35,109 @@ function SubRec() {
     })
     .then(res => { 
       console.log(res);
-      navigate("/subrecipe");
-      setSuccessMessage("Recipe submitted successfully!");
+      setShowModal(true);  // Show the custom pop-up modal on success
+
+      // Clear input fields after successful submission
+      setRecipeName('');
+      setDescription('');
+      setIngredients('');
+      setCookingSteps('');
+      setDifficulty('');
+      setCategory('');
+      setImage(null);
     })
     .catch(err => {
       console.error(err);
-      setErrorMessage("Failed to submit recipe.");
+      // Handle the error accordingly
     });
+  }
+
+  function handleCloseModal() {
+    setShowModal(false);
+    navigate("/subrecipe");
   }
 
   return (
     <div className="subrec-container">
-      <form onSubmit={handleSubmit}>
-        <div className="subrec-row subrec-top-row">
-          <div className="subrec-column subrec-image-upload">
-            <div className="subrec-form-group">
-              <label htmlFor="image" className="subrec-label">Upload Image:</label>
-              <input type="file" id="image" className="subrec-input" onChange={(e) => setImage(e.target.files[0])} />
-            </div>
+      <h1 className="subrec-title">Submit Recipe</h1>
+      <form onSubmit={handleSubmit} className="subrec-form">
+        {/* Form fields for recipe submission */}
+        <div className="subrec-form-group">
+          <label htmlFor="recipeName" className="subrec-label">Recipe Name:</label>
+          <input type="text" id="recipeName" className="subrec-input" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
+        </div>
+        <div className="subrec-form-group">
+          <label htmlFor="description" className="subrec-label">Description:</label>
+          <textarea id="description" className="subrec-textarea" value={description} onChange={(e) => setDescription(e.target.value)} />
+        </div>
+        <div className="subrec-form-group">
+          <label htmlFor="ingredients" className="subrec-label">Ingredients:</label>
+          <textarea id="ingredients" className="subrec-textarea" value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
+        </div>
+        <div className="subrec-form-group">
+          <label htmlFor="cookingSteps" className="subrec-label">Cooking Steps:</label>
+          <textarea id="cookingSteps" className="subrec-textarea" value={cookingSteps} onChange={(e) => setCookingSteps(e.target.value)} />
+        </div>
+        <div className="subrec-form-group">
+          <label htmlFor="image" className="subrec-label">Upload Image:</label>
+          <input type="file" id="image" className="subrec-input" onChange={(e) => setImage(e.target.files[0])} />
+        </div>
+        
+        {/* Radio buttons for difficulty level */}
+        <div className="subrec-form-group">
+          <label htmlFor="difficulty" className="subrec-label">Level of Difficulty:</label>
+          <div className="subrec-radio-group">
+            <input type="radio" id="easy" name="difficulty" className="subrec-radio" value="easy" checked={difficulty === 'easy'} onChange={() => setDifficulty('easy')} />
+            <label htmlFor="easy" className="subrec-label">Easy</label>
           </div>
-          <div className="subrec-column subrec-recipe-details">
-            <div className="subrec-form-group">
-              <label htmlFor="recipeName" className="subrec-label">Recipe Name:</label>
-              <input type="text" id="recipeName" className="subrec-input" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
-            </div>
-            <div className="subrec-form-group">
-              <label htmlFor="description" className="subrec-label">Description:</label>
-              <textarea id="description" className="subrec-textarea" value={description} onChange={(e) => setDescription(e.target.value)} />
-            </div>
+          <div className="subrec-radio-group">
+            <input type="radio" id="medium" name="difficulty" className="subrec-radio" value="medium" checked={difficulty === 'medium'} onChange={() => setDifficulty('medium')} />
+            <label htmlFor="medium" className="subrec-label">Medium</label>
           </div>
-          <div className="subrec-column subrec-recipe-ingredients">
-            <div className="subrec-form-group">
-              <label htmlFor="ingredients" className="subrec-label">Ingredients:</label>
-              <textarea id="ingredients" className="subrec-textarea" value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
-            </div>
+          <div className="subrec-radio-group">
+            <input type="radio" id="hard" name="difficulty" className="subrec-radio" value="hard" checked={difficulty === 'hard'} onChange={() => setDifficulty('hard')} />
+            <label htmlFor="hard" className="subrec-label">Hard</label>
           </div>
         </div>
-        <div className="subrec-row subrec-bottom-row">
-          <div className="subrec-column subrec-cooking-steps">
-            <div className="subrec-form-group">
-              <label htmlFor="cookingSteps" className="subrec-label">Cooking Steps:</label>
-              <textarea id="cookingSteps" className="subrec-textarea" value={cookingSteps} onChange={(e) => setCookingSteps(e.target.value)} />
-            </div>
+
+        {/* Radio buttons for category */}
+        <div className="subrec-form-group">
+          <label className="subrec-label">Category:</label>
+          <div className="subrec-radio-group">
+            <input type="radio" id="mdish" name="category" className="subrec-radio" value="mdish" checked={category === 'mdish'} onChange={(e) => setCategory(e.target.value)} />
+            <label htmlFor="mdish" className="subrec-label">Main Dish</label>
           </div>
-          <div className="subrec-column subrec-difficulty">
-            <div className="subrec-form-group">
-              <label htmlFor="difficulty" className="subrec-label">Level of Difficulty:</label>
-              <div>
-                <input type="radio" id="easy" name="difficulty" className="subrec-radio" value="easy" checked={difficulty === 'easy'} onChange={() => setDifficulty('easy')} />
-                <label htmlFor="easy" className="subrec-label">Easy</label>
-              </div>
-              <div>
-                <input type="radio" id="medium" name="difficulty" className="subrec-radio" value="medium" checked={difficulty === 'medium'} onChange={() => setDifficulty('medium')} />
-                <label htmlFor="medium" className="subrec-label">Medium</label>
-              </div>
-              <div>
-              <input type="radio" id="hard" name="difficulty" className="subrec-radio" value="hard" checked={difficulty === 'hard'} onChange={() => setDifficulty('hard')} />
-                <label htmlFor="hard" className="subrec-label">Hard</label>
-              </div>
-            </div>
+          <div className="subrec-radio-group">
+            <input type="radio" id="beverage" name="category" className="subrec-radio" value="beverage" checked={category === 'beverage'} onChange={(e) => setCategory(e.target.value)} />
+            <label htmlFor="beverage" className="subrec-label">Beverage</label>
           </div>
-          <div className="subrec-column subrec-category">
-            <div className="subrec-form-group">
-              <label className="subrec-label">Category:</label>
-              <div>
-                <input type="radio" id="mdish" name="category" className="subrec-radio" value="mdish" checked={category === 'mdish'} onChange={(e) => setCategory(e.target.value)} />
-                <label htmlFor="mdish" className="subrec-label">Main Dish</label>
-              </div>
-              <div>
-                <input type="radio" id="beverage" name="category" className="subrec-radio" value="beverage" checked={category === 'beverage'} onChange={(e) => setCategory(e.target.value)} />
-                <label htmlFor="beverage" className="subrec-label">Beverage</label>
-              </div>
-              <div>
-                <input type="radio" id="dessert" name="category" className="subrec-radio" value="dessert" checked={category === 'dessert'} onChange={(e) => setCategory(e.target.value)} />
-                <label htmlFor="dessert" className="subrec-label">Dessert</label>
-              </div>
-              <div>
-                <input type="radio" id="other" name="category" className="subrec-radio" value="other" checked={category === 'other'} onChange={(e) => setCategory(e.target.value)} />
-                <label htmlFor="other" className="subrec-label">Others</label>
-              </div>
-            </div>
+          <div className="subrec-radio-group">
+            <input type="radio" id="dessert" name="category" className="subrec-radio" value="dessert" checked={category === 'dessert'} onChange={(e) => setCategory(e.target.value)} />
+            <label htmlFor="dessert" className="subrec-label">Dessert</label>
+          </div>
+          <div className="subrec-radio-group">
+            <input type="radio" id="other" name="category" className="subrec-radio" value="other" checked={category === 'other'} onChange={(e) => setCategory(e.target.value)} />
+            <label htmlFor="other" className="subrec-label">Others</label>
           </div>
         </div>
+
+        {/* Submit button */}
         <button type="submit" className="subrec-button">Submit Recipe</button>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-        {successMessage && <p className="success-message">{successMessage}</p>}
       </form>
+
+      {/* Modal for success message */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Your Recipe has been submitted</h2>
+            <button onClick={handleCloseModal} className="modal-close-button">OK</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
 export default SubRec;
+
+
