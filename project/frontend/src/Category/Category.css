@@ -1,102 +1,74 @@
-/* styling for container in category */
+.category-container {
+  display: flex;
+  padding: 20px;
+  height: 100vh; /* Full viewport height */
+}
 
-  /* Layout for sidebar and content */
-  .category-container {
-    display: flex;
-    justify-content: space-between; /* Distribute space between sidebar and content */
-    background-color: #ffffff; /* White background for the inner layout */
-    border-radius: 8px;
-    overflow: hidden; /* To ensure rounded corners show properly */
-  }
-  
-  /* Sidebar styling */
-  .side-nav {
-    width: 250px;
-    background-color: #BEA286; /* dark background for the sidebar */
-    padding: 20px;
-  }
-  
-  .side-nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .side-nav ul li {
-    margin: 15px 0;
-  }
-  
-  .side-nav ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 10px 15px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-    font-family: cursive;
-  }
-  
-  .side-nav ul li a:hover {
-    background-color: #886644; /* darker bg for hover effect */
-  }
-  
-  /* Main content styling */
-  .category-content {
-    flex-grow: 1;
-    height: 700px;
-    padding: 20px;
-    background-color: #f1f8e9; /*  background for content area */
-    border-left: 2px solid #886644; /* Border to separate sidebar from content */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Vertically center the content */
-    align-items: center; /* Horizontally center the content */
-    text-align: center;
-  }
-  
-  .category-content h1 {
-    margin-bottom: 20px;
-    color: #886644; /* Teal color for the heading */
-  }
-  
-  .category-content p {
-    color: black; /* Darker for paragraph */
-    font-size: 1.2em;
-  }
-  
-  /* Card styling */
-  
-  .category-content .card {
-    margin: 20px 0;
-    border: 1px solid #886644;
-    width: 300px;
-  }
-  
-  .card-body {
-    background-color: #f8f9fa;
-    padding: 15px;
-    text-align: center;
-  }
-  
-  .card-title {
-    color: #491708;
-  }
-  
-  .card-text {
-    font-size: 1.1em;
-    margin-bottom: 15px;
-  }
-  
-  .btn-primary {
-    background-color: #491708;
-    border-color: #491708;
-  }
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  background-color: #e0c7a5; /* Set sidebar background color */
+  padding: 20px;
+  border-radius: 8px;
+}
 
-  .card-img-top {
-    width: 290px;
-    height: 290px;
-    object-fit: cover;
-    margin: 0 auto;
-    border-radius: 10%;
-  }
-  
-  
+.side-nav button {
+  background-color:  #a2866b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.side-nav button:hover {
+  background-color: #aa7e55;
+}
+
+.category-content {
+  flex: 1;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 100%;
+  padding-right: 20px;
+}
+
+.card {
+  height: 500px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card img {
+  height: 300px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #845c36;
+  border-color:#aa7e55;
+  align-self: center; /* Center the button horizontally */
+  margin-top: auto;
+  margin-bottom: 10%; 
+  margin-left: 25%;/* Ensure it's at the bottom */
+  display: block;
+  text-align: center;
+  width: 50%; /* Optional: Make button full width */
+}
+.btn-primary:hover {
+  background-color: #aa7e55;
+}

@@ -11,7 +11,7 @@ function Category() {
       fetch('http://localhost:5000/subrecipe')
         .then((response) => response.json())
         .then((data) => {
-          console.log("Fetched Recipes: ", data); // Check this output
+          console.log("Fetched Recipes: ", data);
           setRecipes(data);
         })
         .catch((error) => console.error('Error fetching recipes:', error));
@@ -19,8 +19,6 @@ function Category() {
   
     fetchRecipes();
   }, []);
-  
-   
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
@@ -65,25 +63,15 @@ function Category() {
     <div className="category-container">
       <nav className="side-nav">
         <h4>Recipes Category:</h4>
-        <ul>
-          <li>
-            <a href="#main dish" onClick={() => handleCategoryClick('mdish')}>Main Dish</a>
-          </li>
-          <li>
-            <a href="#beverage" onClick={() => handleCategoryClick('beverage')}>Beverage</a>
-          </li>
-          <li>
-            <a href="#dessert" onClick={() => handleCategoryClick('dessert')}>Dessert</a>
-          </li>
-          <li>
-            <a href="#others" onClick={() => handleCategoryClick('other')}>Others</a>
-          </li>
-        </ul>
+        <button onClick={() => handleCategoryClick('mdish')}>Main Dish</button>
+        <button onClick={() => handleCategoryClick('beverage')}>Beverage</button>
+        <button onClick={() => handleCategoryClick('dessert')}>Dessert</button>
+        <button onClick={() => handleCategoryClick('other')}>Others</button>
       </nav>
       <div className="category-content">
         {selectedCategory === 'default' ? (
-          <div className="card">
-            <div className="card-body">
+          <div className="card" style={{textAlign: 'center'}}>
+            <div className="card-body" >
               <h1 className="card-title">Category</h1>
               <p className="card-text">Select a category from the sidebar to explore.</p>
             </div>
@@ -97,4 +85,3 @@ function Category() {
 }
 
 export default Category;
-
