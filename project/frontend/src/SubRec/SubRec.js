@@ -17,6 +17,20 @@ function SubRec() {
   function handleSubmit(e) {
     e.preventDefault();
 
+     // Check if all required fields are filled
+     if (
+      !recipeName ||
+      !description ||
+      !ingredients ||
+      !cookingSteps ||
+      !difficulty ||
+      !category ||
+      !image
+    ) {
+      alert('Please fill out all fields before submitting.');
+      return;
+    }
+
     const formData = new FormData();
     formData.append('recipeName', recipeName);
     formData.append('description', description);
@@ -54,7 +68,7 @@ function SubRec() {
 
   function handleCloseModal() {
     setShowModal(false);
-    navigate("/prf"); // Navigate to the profile page after closing the modal
+    navigate("/ctg"); // Navigate to the profile page after closing the modal
   }
 
   return (
