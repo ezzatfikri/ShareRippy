@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../Authcontext';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate(); // Initialize useNavigate
+  const { login } = useAuth();
 
   const handleLogin = async (event) => {
       event.preventDefault(); // Prevent form from refreshing the page
@@ -18,7 +20,9 @@ function Login() {
             });
 
             if (response.data.user) {
+            
               setMessage('Login successful!');
+              login();
               navigate('/');  // Redirect to home page after successful login
           }
       } catch (error) {
