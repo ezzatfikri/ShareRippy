@@ -22,9 +22,9 @@ function App() {
             <Route path='/prf' element={<Profile/>} />
             <Route path='/login' element={<LogIn />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/subrecipe' element={<SubRec />} />
+            <Route path='/recdetail/:id' element={<RecDet />} />
             <Route path='/recdetail' element={<RecDet />} />
-  
+            
           </Routes>
   
           <Footer />
