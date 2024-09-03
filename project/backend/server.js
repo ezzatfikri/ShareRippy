@@ -40,6 +40,19 @@ app.get('/subrecipe', (req, res) => {
   });
 });
 
+// Endpoint to retrieve a recipe by ID
+app.get('/recipe/:id', (req, res) => {
+  const recipeId = req.params.id;
+  const sql = "SELECT * FROM recipe WHERE id = ?";
+  db.query(sql, [recipeId], (err, data) => {
+    if (err) {
+      console.error("Error retrieving recipe details: " + err.message);
+      return res.status(500).json(err);
+    }
+    res.json(data[0]); // Return the first item in the result array
+  });
+});
+
 // Endpoint to submit a new recipe with an image
 app.post('/subrecipe', upload.single('image'), (req, res) => {
   try {
