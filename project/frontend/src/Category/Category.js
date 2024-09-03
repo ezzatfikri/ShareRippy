@@ -50,7 +50,7 @@ function Category() {
               <div className="card-body">
                 <h5 className="card-title">{recipe.recipe_name}</h5>
                 <p className="card-text">{recipe.description}</p>
-                <a href={`#${recipe.recipe_name.replace(/\s+/g, '-').toLowerCase()}`} className="btn btn-primary">View Recipe</a>
+                <a href={`/recdetail/${recipe.id}`} className="btn btn-primary">View Recipe</a>
               </div>
             </div>
           </div>
