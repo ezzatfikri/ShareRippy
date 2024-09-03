@@ -1,12 +1,17 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Profile.css';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('submitted');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const showTab = (tabName) => {
     setActiveTab(tabName);
+  };
+
+  const handleSubmitRecipeClick = () => {
+    navigate('/subrecipe');
   };
 
   return (
@@ -21,7 +26,7 @@ const Profile = () => {
 
       <div className="profile-tabs">
         <button className={`tab ${activeTab === 'submitted' ? 'active' : ''}`} onClick={() => showTab('submitted')}>Submitted Recipes</button>
-        <button className={`tab ${activeTab === 'favorites' ? 'active' : ''}`} onClick={() => showTab('favorites')}>Favorite Recipes</button>
+        <button className={`tab ${activeTab === 'submit' ? 'active' : ''}`} onClick={handleSubmitRecipeClick}>Submit Recipe</button>
       </div>
 
       <div className={`tab-content ${activeTab === 'submitted' ? 'active' : ''}`}>
@@ -35,20 +40,6 @@ const Profile = () => {
             </div>
           </li>
           {/* More submitted recipes */}
-        </ul>
-      </div>
-
-      <div className={`tab-content ${activeTab === 'favorites' ? 'active' : ''}`}>
-        <h3>Favorite Recipes</h3>
-        <ul className="recipe-list">
-          <li>
-            <img src="favrecipe.jpeg" alt="Recipe Thumbnail" />
-            <h4>Recipe Title</h4>
-            <div className='recipe-details'>
-              <p>Brief description of the recipe.</p>
-            </div>
-          </li>
-          {/* More favorite recipes */}
         </ul>
       </div>
     </section>
