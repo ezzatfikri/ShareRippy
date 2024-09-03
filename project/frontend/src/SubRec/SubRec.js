@@ -54,7 +54,7 @@ function SubRec() {
 
   function handleCloseModal() {
     setShowModal(false);
-    navigate("/subrecipe");
+    navigate("/prf"); // Navigate to the profile page after closing the modal
   }
 
   return (
@@ -139,5 +139,3 @@ function SubRec() {
 }
 
 export default SubRec;
-
-
