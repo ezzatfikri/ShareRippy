@@ -53,7 +53,7 @@ function Register () {
                             <form onSubmit={handleSignup}>
                                 <div className="form-group">
                                     <label htmlFor="name" className='text-start'>Username</label>
-                                    <input type="text" className="form-control" id="name" placeholder="Enter your full name"
+                                    <input type="text" className="form-control" id="name" placeholder="Enter your username"
                                         value={username} onChange={(e) => setUsername(e.target.value)} />
                                 </div>
                                 <div className="form-group">

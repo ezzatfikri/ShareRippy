@@ -7,6 +7,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
   const navigate = useNavigate(); // Initialize useNavigate
   const { login } = useAuth();
 
@@ -20,11 +21,14 @@ function Login() {
             });
 
             if (response.data.user) {
-            
               setMessage('Login successful!');
+              setShowSuccess(true);
               login();
+
+              setTimeout(() => {
               navigate('/');  // Redirect to home page after successful login
-          }
+          }, 1500);
+        }
       } catch (error) {
           if (error.response) {
               setMessage(error.response.data.message);
@@ -37,6 +41,8 @@ function Login() {
         AOS.init();
         
         return (
+<div>
+{showSuccess && <div className="alert alert-success text-center mt-4">{message}</div>}
     <div className="container mt-5 mb-5" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
       <div className="row justify-content-center">
           <div className="col-md-5">
@@ -55,7 +61,7 @@ function Login() {
                                   value={password} onChange={(e) => setPassword(e.target.value)} />
                           </div>
                           <button type="submit" className="btn btn-block custom-btn">Login</button>
-                          {message && <p className="text-center font-weight-light mt-2">{message}</p>}
+                          {message && !showSuccess &&<p className="text-center text-danger font-weight-light mt-2">{message}</p>}
                           <p className='text-center font-weight-light'>Don't have an account? <a href="/register" className='text'>Sign Up</a></p>
                       </form>
                   </div>
@@ -63,6 +69,7 @@ function Login() {
           </div>
       </div>
   </div>
+</div>
     );
 }
 
